@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" data-theme="ember">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LiTeer</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="hub.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="ag" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="var(--acc)"/><stop offset="1" stop-color="var(--acc2)"/></linearGradient></defs></svg>
+<div id="app">
+<aside id="side">
+<a class="logo" href="#home" data-go="home"><svg class="i flame"><use href="icons.svg#flame"/></svg><span class="wm"><i>Li</i><b>Teer</b></span></a>
+<nav id="nav" aria-label="Main"></nav>
+<div class="sidefoot">
+<button class="navb" data-go="settings"><svg class="i"><use href="icons.svg#settings"/></svg><span>Settings</span></button>
+<button class="navb" data-go="about"><svg class="i"><use href="icons.svg#info"/></svg><span>About</span></button>
+<p class="made">Made By DeadByte/Ethan</p>
+</div>
+</aside>
+<div id="col">
+<header id="top">
+<button class="ib" id="sideBtn" aria-label="Toggle sidebar"><svg class="i"><use href="icons.svg#panel-left"/></svg></button>
+<button id="cmdBtn" class="search" aria-label="Search"><svg class="i"><use href="icons.svg#search"/></svg><span>Search games, apps, or anything...</span><kbd>Ctrl K</kbd></button>
+<button id="pill" class="pill" data-go="settings" title="Proxy status"><i></i><span>Proxy</span></button>
+<button class="ib" id="themeBtn" aria-label="Change theme"><svg class="i"><use href="icons.svg#sun"/></svg></button>
+<div class="pro"><button class="ib av" id="proBtn" aria-label="Profile"><svg class="i"><use href="icons.svg#user"/></svg></button>
+<div id="proMenu" class="menu" hidden>
+<label class="fld">Your name<input id="pName" type="text" maxlength="24" placeholder="Player"></label>
+<div class="fld"><span>Avatar</span><div class="avs" id="avs"></div></div>
+<button class="btn" data-go="settings">Open settings</button>
+</div></div>
+</header>
+<main id="main">
+<section id="v-home" class="view">
+<div class="hero">
+<canvas id="embers" aria-hidden="true"></canvas>
+<span class="slash s1"></span><span class="slash s2"></span>
+<div class="brandbig"><svg class="i flame"><use href="icons.svg#flame"/></svg><span class="wm"><i>Li</i><b>Teer</b></span></div>
+<p class="tag" id="greet">Unblocked games, apps, and more.</p>
+<form id="hSearch" class="bigsearch"><svg class="i"><use href="icons.svg#search"/></svg><input id="hq" type="search" placeholder="Search for games, apps, or anything..." autocomplete="off"><button class="go" aria-label="Search"><svg class="i"><use href="icons.svg#arrow-right"/></svg></button></form>
+</div>
+<div class="tiles" id="tiles"></div>
+<div class="shead"><h2>Featured games</h2><div class="row"><button class="ib" id="fPrev" aria-label="Scroll left"><svg class="i"><use href="icons.svg#chevron-left"/></svg></button><button class="ib" id="fNext" aria-label="Scroll right"><svg class="i"><use href="icons.svg#chevron-right"/></svg></button><button class="link" data-go="games">View all <svg class="i"><use href="icons.svg#arrow-right"/></svg></button></div></div>
+<div class="rail" id="featured"></div>
+<div id="recentBox"><div class="shead"><h2>Continue playing</h2></div><div class="rail" id="recent"></div></div>
+<div class="two">
+<div class="card"><div class="shead"><h2>Proxy</h2><button class="link" data-go="settings">Change</button></div><div id="pxCard"></div></div>
+<div class="card"><div class="shead"><h2>Favorites</h2><button class="link" data-go="favs">Open</button></div><div id="favMini"></div></div>
+</div>
+</section>
+<section id="v-games" class="view">
+<div class="shead"><h1>Games</h1><span class="count" id="gcount"></span></div>
+<div class="bar">
+<label class="sbox"><svg class="i"><use href="icons.svg#search"/></svg><input id="gq" type="search" placeholder="Search games" autocomplete="off"></label>
+<div class="dd" id="ddLib"></div>
+<div class="dd" id="ddSort"></div>
+<button class="chip" id="favOnly" aria-pressed="false"><svg class="i"><use href="icons.svg#star"/></svg>Favorites</button>
+<button class="chip" id="shuf"><svg class="i"><use href="icons.svg#shuffle"/></svg>Random game</button>
+</div>
+<div class="az" id="az"></div>
+<div class="grid" id="gGrid"></div>
+<div id="gMore" class="more"></div>
+<p class="empty" id="gEmpty" hidden>No games match that.</p>
+</section>
+<section id="v-videos" class="view"><div class="shead"><h1>Videos</h1></div><p class="lead">Watch through the proxy browser. Click one to open it in a new Browser tab.</p><div class="grid sc" id="vGrid"></div></section>
+<section id="v-apps" class="view"><div class="shead"><h1>Apps</h1></div><p class="lead">Websites and web apps that open through the proxy browser.</p><div class="grid sc" id="aGrid"></div></section>
+<section id="v-browser" class="view">
+<div class="tabs" id="btabs"></div>
+<form class="omni" id="omni">
+<button type="button" class="ib" id="bBack" aria-label="Back"><svg class="i"><use href="icons.svg#arrow-left"/></svg></button>
+<button type="button" class="ib" id="bFwd" aria-label="Forward"><svg class="i"><use href="icons.svg#arrow-right"/></svg></button>
+<button type="button" class="ib" id="bReload" aria-label="Reload"><svg class="i"><use href="icons.svg#rotate-cw"/></svg></button>
+<button type="button" class="ib" id="bHome" aria-label="Home"><svg class="i"><use href="icons.svg#house"/></svg></button>
+<label class="addr"><svg class="i"><use href="icons.svg#lock"/></svg><input id="addr" type="text" placeholder="Search or enter a web address" autocomplete="off" spellcheck="false"><em id="engTag"></em></label>
+<span class="pro"><button type="button" class="ib" id="bExt" aria-label="Extensions" title="Extensions"><svg class="i"><use href="icons.svg#puzzle"/></svg></button><div id="extMenu" class="menu" hidden></div></span>
+<button type="button" class="ib" id="bMark" aria-label="Bookmark"><svg class="i"><use href="icons.svg#bookmark"/></svg></button>
+<button type="button" class="ib" id="bFull" aria-label="Fullscreen"><svg class="i"><use href="icons.svg#maximize"/></svg></button>
+</form>
+<div class="marks" id="marks"></div>
+<div class="frames" id="frames"></div>
+</section>
+<section id="v-favs" class="view"><div class="shead"><h1>Favorites</h1></div><div class="grid" id="fGrid"></div><p class="empty" id="fEmpty">Star a game and it shows up here.</p></section>
+<section id="v-settings" class="view">
+<div class="shead"><h1>Settings</h1></div>
+<div class="setwrap">
+<nav class="setnav" id="setnav">
+<button data-sp="proxy"><svg class="i"><use href="icons.svg#zap"/></svg>Proxy</button>
+<button data-sp="browser"><svg class="i"><use href="icons.svg#globe"/></svg>Browser</button>
+<button data-sp="ext"><svg class="i"><use href="icons.svg#puzzle"/></svg>Userscripts</button>
+<button data-sp="sites"><svg class="i"><use href="icons.svg#server"/></svg>Proxy sites</button>
+<button data-sp="libs"><svg class="i"><use href="icons.svg#library"/></svg>Libraries</button>
+<button data-sp="look"><svg class="i"><use href="icons.svg#palette"/></svg>Appearance</button>
+<button data-sp="cloak"><svg class="i"><use href="icons.svg#eye-off"/></svg>Disguise</button>
+<button data-sp="panic"><svg class="i"><use href="icons.svg#shield"/></svg>Panic key</button>
+<button data-sp="data"><svg class="i"><use href="icons.svg#database"/></svg>Data</button>
+</nav>
+<div class="setbody">
+<div class="sp" id="sp-proxy">
+<h3>Engine</h3>
+<div class="seg" id="segEng"></div>
+<h3>Transport</h3>
+<div class="seg" id="segTr"></div>
+<label class="fld" id="bareBox">Bare server URL<input id="sBare" type="text" spellcheck="false" placeholder="https://example.com/bare/"></label>
+<h3>Versions</h3>
+<div class="row2v"><div class="fld"><span>Ultraviolet</span><div class="dd" id="ddUV"></div></div><div class="fld"><span>Scramjet</span><div class="dd" id="ddSJ"></div></div></div>
+<p class="hint">Changing a version reloads the hub. Scramjet 1.1.0 is the only version that works in browsers today.</p>
+<h3>Wisp server</h3>
+<label class="fld">Address<input id="sWisp" type="text" spellcheck="false" placeholder="wss://anura.pro/"></label>
+<div class="wlist" id="wlist"></div>
+<label class="fld">More Wisp servers (separate with spaces or commas)<input id="sExtra" type="text" spellcheck="false" placeholder="wss://example.com/wisp/"></label>
+<div class="row"><button class="btn solid" id="applyProxy">Apply</button><button class="btn" id="testAll">Check servers</button><span id="proxyMsg" class="msg"></span></div>
+<label class="sw"><input type="checkbox" id="sFast"><span></span>Pick the fastest server automatically</label>
+<label class="sw"><input type="checkbox" id="sAuto"><span></span>Switch to another server if this one is down</label>
+<label class="sw"><input type="checkbox" id="sPG"><span></span>Load games through the proxy</label>
+<p class="hint">The proxy needs this page to be on https.</p>
+</div>
+<div class="sp" id="sp-browser">
+<h3>Browser type</h3>
+<p class="lead">Changes how the Browser tab looks and which search engine it starts with. It is still the LiTeer browser underneath.</p>
+<div class="btypes" id="btypes"></div>
+<h3>Search engine</h3>
+<div class="dd" id="ddSE"></div>
+<label class="fld" id="seBox">Custom search address (use %s for the query)<input id="sSE" type="text" spellcheck="false" placeholder="https://example.com/?q=%s"></label>
+</div>
+<div class="sp" id="sp-ext">
+<h3>Userscripts</h3>
+<p class="lead">Userscripts are small scripts that run on a page as it opens in the Browser tab, like Tampermonkey. Each one says which sites it runs on and when. Use the puzzle button in the Browser to switch them on and off.</p>
+<div class="extlist" id="extList"></div>
+<h3>Add a userscript</h3>
+<div class="row"><input id="xUrl" type="url" spellcheck="false" placeholder="https://example.com/script.user.js" style="flex:1;min-width:0"><button type="button" class="btn solid" id="xUrlGo">Install from address</button></div>
+<div class="row" style="margin-top:10px"><label class="btn" for="extFile"><svg class="i"><use href="icons.svg#folder-plus"/></svg>Choose a .user.js file</label><input type="file" id="extFile" accept=".js,.css,.txt" hidden><button type="button" class="btn" id="xNew">Write a new script</button><span class="msg" id="extMsg"></span></div>
+<p class="hint">Opening a .user.js address in the Browser tab offers to install it. Supported: @match, @include, @exclude, @run-at, @require, and the GM_ functions (storage, addStyle, xmlhttpRequest, openInTab, menu commands). Turning a script off fully applies when the page reloads.</p>
+<label class="fld">Script editor<textarea id="xCode" rows="12" spellcheck="false" placeholder="Paste a userscript here, then press Add script"></textarea></label>
+<button type="button" class="btn solid" id="xSave">Add script</button>
+</div>
+<div class="sp" id="sp-sites">
+<h3>Proxy sites</h3>
+<p class="lead">LiTeer.exe can also run these open-source proxies as their own separate sites. Start them from the Proxy sites tab in LiTeer.exe, then open them here.</p>
+<div class="extlist" id="siteList"></div>
+<p class="hint">Lux, InvisiProxy, InvisiProxy LTS, NOVA Proxy, Northstar Proxy and Nano are AGPL-3.0 projects. Outerworld has no license listed.</p>
+</div>
+<div class="sp" id="sp-libs">
+<h3>Game libraries</h3>
+<p class="lead" id="libNote"></p>
+<div class="card" id="libList"></div>
+<div id="libAdmin" hidden>
+<label class="fld">Add a library (GitHub or GitLab address)<input id="newLib" type="text" spellcheck="false" placeholder="https://github.com/owner/games"></label>
+<div class="row"><button class="btn solid" id="libAdd">Add library</button><span class="msg" id="libMsg"></span></div>
+</div>
+</div>
+<div class="sp" id="sp-look">
+<h3>Theme</h3>
+<div class="seg" id="segTheme"></div>
+<h3>Accent</h3>
+<div class="swatches" id="swatches"></div>
+<h3>Card size</h3>
+<div class="seg" id="segSize"></div>
+<label class="sw"><input type="checkbox" id="sFx"><span></span>Floating embers on the home page</label>
+</div>
+<div class="sp" id="sp-cloak">
+<h3>Tab disguise</h3>
+<div class="dd" id="ddCloak"></div>
+<label class="fld" id="ctBox">Custom tab name<input id="sCT" type="text" placeholder="My notes"></label>
+<div class="row" style="margin-top:14px"><button class="btn" id="blank">Open in about:blank</button></div>
+<label class="sw"><input type="checkbox" id="sLeave"><span></span>Ask before closing this tab</label>
+</div>
+<div class="sp" id="sp-panic">
+<h3>Panic key</h3>
+<p class="lead">Press the key anywhere (outside a text box) to jump to another page.</p>
+<div class="row2"><label class="fld">Key<input id="sPK" type="text" maxlength="12" placeholder="`"></label><label class="fld">Go to<input id="sPU" type="text" spellcheck="false" placeholder="https://www.google.com"></label></div>
+</div>
+<div class="sp" id="sp-data">
+<h3>Your data</h3>
+<p class="lead">Favorites, shortcuts, bookmarks and settings live in this browser only.</p>
+<div class="row"><button class="btn" id="exp"><svg class="i"><use href="icons.svg#download"/></svg>Export</button><label class="btn" for="impFile"><svg class="i"><use href="icons.svg#upload"/></svg>Import</label><input type="file" id="impFile" accept="application/json" hidden><button class="btn danger" id="reset"><svg class="i"><use href="icons.svg#trash-2"/></svg>Reset everything</button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="v-about" class="view">
+<div class="shead"><h1>About</h1></div>
+<div class="card"><p id="aboutText"></p></div>
+<h2>Game sources</h2>
+<div class="card" id="sources"></div>
+<h2>Credits</h2>
+<div class="card" id="credits"></div>
+</section>
+</main>
+</div>
+</div>
+<nav id="mnav" aria-label="Main"></nav>
+<div id="player" hidden>
+<div class="pbar">
+<button class="btn" id="pClose"><svg class="i"><use href="icons.svg#arrow-left"/></svg>Back</button>
+<b id="pTitle"></b><span class="tagl" id="pLib"></span>
+<span class="sp"></span>
+<button class="btn" id="pFav"><svg class="i"><use href="icons.svg#star"/></svg><span>Star</span></button>
+<button class="btn" id="pReload"><svg class="i"><use href="icons.svg#rotate-cw"/></svg>Reload</button>
+<button class="btn solid" id="pFull"><svg class="i"><use href="icons.svg#maximize"/></svg>Fullscreen</button>
+</div>
+<div class="pload" id="pLoad">Starting the game...</div>
+<iframe id="pFrame" allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write" referrerpolicy="no-referrer"></iframe>
+</div>
+<div id="cmd" hidden>
+<div class="cmdbox" role="dialog" aria-label="Search">
+<label class="cmdin"><svg class="i"><use href="icons.svg#search"/></svg><input id="cmdq" type="text" placeholder="Search games, apps, pages, or type a web address" autocomplete="off"></label>
+<div id="cmdres"></div>
+</div>
+</div>
+<div id="toast"></div>
+<script type="module" src="hub.js"></script>
+</body>
+</html>
